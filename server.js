@@ -3,11 +3,9 @@ require("dotenv").config()
 const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
-const http = require("http")
 const nodemailer = require("nodemailer")
 const port = process.env.PORT || 8000
 const app = express()
-const server = http.createServer(app)
 
 // Middleware for parsing request bodies
 app.use(bodyParser.json())
@@ -102,6 +100,8 @@ app.use((err, req, res, next) => {
     })
 })
 
-server.listen(port, () => {
+app.listen(port, () => {
     console.log(`\nServer started on port ${port} :) \n`)
 })
+
+module.exports = app
